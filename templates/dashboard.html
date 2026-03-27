@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard">
+
+    <h2>📊 Dashboard</h2>
+
+    <div class="summary-card">
+        <h3>Total Spending</h3>
+        <h1>€{{ total }}</h1>
+    </div>
+
+    <!-- Chart -->
+<div class="chart-wrapper">
+    <div class="chart-container">
+        <canvas id="expenseChart"></canvas>
+    </div>
+</div>
+
+    <!-- Table -->
+    <table>
+        <tr>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Date</th>
+        </tr>
+
+        {% for item in data %}
+        <tr>
+            <td>€{{ item.amount }}</td>
+            <td>{{ item.category }}</td>
+            <td>{{ item.date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+<script>
+const labels = {{ categories | tojson | safe }};
+const values = {{ values | tojson | safe }};
+
+new Chart(document.getElementById('expenseChart'), {
+    type: 'pie',
+    data: {
+        labels: labels,
+        datasets: [{
+            data: values,
+            backgroundColor: [
+                '#4CAF50',
+                '#FF9800',
+                '#2196F3',
+                '#E91E63',
+                '#9C27B0'
+            ]
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false
+    }
+});
+</script>
+
+{% endblock %}

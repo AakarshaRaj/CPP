@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Finance Tracker</title>
+    <link rel="stylesheet" href="/static/style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<nav class="navbar">
+    <h2>💰 Finance Tracker</h2>
+    <div>
+        <a href="/">Home</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/add-page">Add</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
+
+<div class="main-container">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

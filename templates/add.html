@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card">
+    <h2>➕ Add Transaction</h2>
+
+    <form action="/add" method="post" enctype="multipart/form-data">
+
+        <label>Amount (€)</label>
+        <input type="number" name="amount" required>
+
+        <label>Category</label>
+        <input type="text" name="category" placeholder="Food, Travel, Bills">
+
+        <label>Receipt (Optional)</label>
+        <input type="file" name="receipt">
+
+        <button class="btn">Save Transaction</button>
+    </form>
+
+</div>
+
+{% endblock %}
